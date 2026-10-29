@@ -1,0 +1,126 @@
+{
+  "title": "Research Interests",
+  "subtitle": "Predictive Biological Modeling",
+  "themes": [
+    {
+      "label": "Predictive Biological Modeling",
+      "weight": 100,
+      "category": "vision"
+    },
+    {
+      "label": "Mechanistic Understanding",
+      "weight": 95,
+      "category": "vision"
+    },
+    {
+      "label": "Biological Mechanism Discovery",
+      "weight": 93,
+      "category": "vision"
+    },
+    {
+      "label": "Therapeutic Intervention Design",
+      "weight": 90,
+      "category": "vision"
+    },
+    {
+      "label": "Perturbation Modeling",
+      "weight": 94,
+      "category": "biology"
+    },
+    {
+      "label": "Single-cell Genomics",
+      "weight": 83,
+      "category": "biology"
+    },
+    {
+      "label": "Drug Response Prediction",
+      "weight": 84,
+      "category": "biology"
+    },
+    {
+      "label": "Treatment Response",
+      "weight": 77,
+      "category": "biology"
+    },
+    {
+      "label": "Molecular Causality",
+      "weight": 85,
+      "category": "theory"
+    },
+    {
+      "label": "Causal Representation Learning",
+      "weight": 89,
+      "category": "theory"
+    },
+    {
+      "label": "Identifiability",
+      "weight": 91,
+      "category": "theory"
+    },
+    {
+      "label": "Transferability",
+      "weight": 92,
+      "category": "theory"
+    },
+    {
+      "label": "Domain Generalization",
+      "weight": 84,
+      "category": "theory"
+    },
+    {
+      "label": "World Models",
+      "weight": 88,
+      "category": "methods"
+    },
+    {
+      "label": "Latent Dynamics",
+      "weight": 86,
+      "category": "methods"
+    },
+    {
+      "label": "Uncertainty Quantification",
+      "weight": 80,
+      "category": "methods"
+    },
+    {
+      "label": "Out-of-Distribution Robustness",
+      "weight": 79,
+      "category": "methods"
+    },
+    {
+      "label": "Generative Modeling",
+      "weight": 72,
+      "category": "methods"
+    },
+    {
+      "label": "Bayesian Modeling",
+      "weight": 65,
+      "category": "methods"
+    },
+    {
+      "label": "Gaussian Processes",
+      "weight": 52,
+      "category": "methods"
+    },
+    {
+      "label": "Multi-omics Integration",
+      "weight": 70,
+      "category": "biology"
+    },
+    {
+      "label": "Spatial Transcriptomics",
+      "weight": 67,
+      "category": "biology"
+    },
+    {
+      "label": "Compositional Generalization",
+      "weight": 76,
+      "category": "theory"
+    },
+    {
+      "label": "Selective Prediction",
+      "weight": 69,
+      "category": "methods"
+    }
+  ]
+}
