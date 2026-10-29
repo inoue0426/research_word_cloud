@@ -1,6 +1,6 @@
 # Research Word Cloud
 
-Reproducible, editable visualizations of research interests, centered on **Predictive Biological Modeling**.
+Reproducible, editable visualizations of research interests, centered on **Predictive Biological Modeling**. The primary visualization uses four bounded groups so the topics remain readable on slides and web pages.
 
 ## Quick start
 
@@ -10,7 +10,7 @@ python generate.py
 ```
 
 Generated files in `output/`:
-- `research_word_cloud.png` and `.svg` — weighted research-interest word cloud
+- `research_word_cloud.png` and `.svg` — grouped, weighted research-interest map
 - `research_topic_map.png` and `.svg` — grouped scientific goals, applications, theory, and methods
 
 ## Edit research interests

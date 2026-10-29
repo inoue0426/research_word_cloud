@@ -2,14 +2,11 @@
 """Deterministic, editable research-interest word cloud and topic map."""
 import argparse
 import json
-import math
-import random
 from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.font_manager import FontProperties
 from matplotlib.patches import FancyBboxPatch
 
 ROOT = Path(__file__).resolve().parent
@@ -40,20 +37,45 @@ def load(path):
     return data
 
 def cloud(data, out, seed=17):
-    from wordcloud import WordCloud
-    # Use underscore tokens so multi-word research topics stay intact.
-    phrases = {t["label"].replace(" ", "_"): t["weight"] for t in data["themes"]}
-    categories = {t["label"].replace(" ", "_"): t["category"] for t in data["themes"]}
-    wc = WordCloud(width=2400, height=1350, background_color="white",
-                   collocations=False, prefer_horizontal=0.96,
-                   max_words=100, margin=12, random_state=seed,
-                   relative_scaling=0.45, min_font_size=16)
-    wc.generate_from_frequencies(phrases)
-    wc.recolor(color_func=lambda word, **kwargs: PALETTE[categories[word]],
-               random_state=seed)
-    fig, ax = plt.subplots(figsize=(16, 9), dpi=180)
-    ax.imshow(wc.to_array(), interpolation="bilinear")
+    """Create a readable, grouped topic map instead of an overlapping cloud.
+
+    Args:
+        data: Validated research-interest data.
+        out: Directory where PNG and SVG files are written.
+        seed: Retained for CLI compatibility and future layout variants.
+
+    Returns:
+        None.
+    """
+    del seed
+    fig, ax = plt.subplots(figsize=(16, 10), dpi=180)
+    fig.patch.set_facecolor("#FAFBFD")
+    ax.set_xlim(0, 16)
+    ax.set_ylim(0, 10)
     ax.axis("off")
+    ax.text(0.7, 9.55, data["title"], fontsize=28, weight="bold", color="#14345A")
+    ax.text(0.72, 9.08, data["subtitle"], fontsize=13, color="#64748B")
+
+    positions = [(0.7, 5.05), (8.2, 5.05), (0.7, 0.55), (8.2, 0.55)]
+    for (category, (x, y)) in zip(LABELS, positions):
+        rect = FancyBboxPatch(
+            (x, y), 7.1, 3.55,
+            boxstyle="round,pad=0.18,rounding_size=0.2",
+            facecolor="white", edgecolor=PALETTE[category], linewidth=1.8,
+        )
+        ax.add_patch(rect)
+        ax.text(x + 0.32, y + 3.08, LABELS[category], fontsize=15,
+                weight="bold", color=PALETTE[category])
+        items = sorted((t for t in data["themes"] if t["category"] == category),
+                       key=lambda t: -t["weight"])
+        for row, item in enumerate(items):
+            label = item["label"]
+            row_y = y + 2.57 - row * 0.38
+            ax.text(x + 0.38, row_y, label, fontsize=10.2, color="#334155",
+                    va="center")
+            ax.plot([x + 5.85, x + 5.85 + item["weight"] / 100 * 0.78],
+                    [row_y] * 2, color=PALETTE[category], lw=3,
+                    solid_capstyle="round")
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
     fig.savefig(out / "research_word_cloud.png", dpi=180, facecolor="white")
     fig.savefig(out / "research_word_cloud.svg", facecolor="white")
